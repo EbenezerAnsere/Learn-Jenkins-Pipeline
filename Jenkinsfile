@@ -6,19 +6,25 @@ pipeline {
             agent{
                 docker{
                     image 'node:18-alpine'
-                    // reuseNode true
+                    args '-v /c/ProgramData/Jenkins/.jenkins/workspace:/workspace -w /workspace'
+                    reuseNode true
                 }
             }
             steps {
-                // sh ''' 
-                //     ls -la
-                //     node --version
-                //     npm --version
-                //     npm ci
-                //     npm run build
-                //     ls -la
-                // '''
-                sh 'node -v'
+                sh ''' 
+                    ls -la
+                    node --version
+                    npm --version
+                    npm ci
+                    npm run build
+                    ls -la
+                '''
+              
+            }
+        }
+        stage('Test'){
+            steps{
+                echo 'Test stage'
             }
         }
     }
