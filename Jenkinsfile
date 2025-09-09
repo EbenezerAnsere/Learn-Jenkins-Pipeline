@@ -20,7 +20,16 @@ pipeline {
                     ls -la
                     node --version
                     npm --version
+                    
+                    # fix npm cache permissions by using a local folder
+                    npm config set cache $PWD/.npm-cache --global
+                    
+                    # clean install
+                    npm ci
+                    
+                    # build project
                     npm run build
+                    
                     ls -la
                 '''
             }
@@ -28,6 +37,11 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Test stage'
+            }
+        }
+        stage('Archive Build') {
+            steps {
+                archiveArtifacts artifacts: 'build/**', fingerprint: true
             }
         }
     }
