@@ -20,9 +20,6 @@ pipeline {
                     ls -la
                     node --version
                     npm --version
-                    # configure npm to use a local cache folder in workspace
-                    npm config set cache $PWD/.npm-cache --global
-                    npm ci --no-cache
                     npm run build
                     ls -la
                 '''
