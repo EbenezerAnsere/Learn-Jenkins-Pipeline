@@ -31,6 +31,13 @@ pipeline {
         }
 
         stage('Run Test') {
+            agent {
+                docker {
+                    image 'node:18-alpine'
+                    reuseNode true
+                }
+            }
+
             steps {
                 echo 'Running Test'
             }
