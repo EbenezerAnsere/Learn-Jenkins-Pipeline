@@ -24,14 +24,14 @@ pipeline {
         stage('Run Docker') {
             agent {
                 docker {
-                    image: 'node:14-alpine'
+                    image 'node:18-alpine'
                     reuseNode true   // optional: mounts Jenkins workspace
                 }
             }
             steps {
                 sh 'node -v'
                 sh 'npm -v'
-                sh 'echo "Running inside Node 14 Alpine container!"'
+                sh 'echo "Running inside Node 18 Alpine container!"'
             }
         }
         stage('Run Test'){
