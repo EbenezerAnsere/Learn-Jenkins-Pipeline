@@ -39,10 +39,5 @@ pipeline {
                 echo 'Test stage'
             }
         }
-        stage('Archive Build') {
-            steps {
-                archiveArtifacts artifacts: 'build/**', fingerprint: true
-            }
-        }
     }
 }
