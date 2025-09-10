@@ -24,7 +24,7 @@ pipeline {
         stage('Run Docker') {
             agent {
                 docker {
-                    image 'node:14-alpine'
+                    image: 'node:14-alpine'
                     reuseNode true   // optional: mounts Jenkins workspace
                 }
             }
