@@ -2,11 +2,11 @@ pipeline {
     agent any
     
     stages {
-        stage('Run Docker') {
+        stage('Run Node 14 in Docker') {
             agent {
                 docker {
                     image 'node:14-alpine'
-                    reuseNode true   // optional: mounts Jenkins workspace
+                    reuseNode true
                 }
             }
             steps {
@@ -15,17 +15,12 @@ pipeline {
                 sh 'echo "Running inside Node 14 Alpine container!"'
             }
         }
-    }
-}
-pipeline {
-    agent any
-    
-    stages {
-        stage('Run Docker') {
+
+        stage('Run Node 18 in Docker') {
             agent {
                 docker {
                     image 'node:18-alpine'
-                    reuseNode true   // optional: mounts Jenkins workspace
+                    reuseNode true
                 }
             }
             steps {
@@ -34,8 +29,9 @@ pipeline {
                 sh 'echo "Running inside Node 18 Alpine container!"'
             }
         }
-        stage('Run Test'){
-            steps{
+
+        stage('Run Test') {
+            steps {
                 echo 'Running Test'
             }
         }
