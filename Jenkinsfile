@@ -33,5 +33,10 @@ pipeline {
                 sh 'echo "Running inside Node 14 Alpine container!"'
             }
         }
+        stage('Run Test'){
+            steps{
+                echo 'Running Test'
+            }
+        }
     }
 }
