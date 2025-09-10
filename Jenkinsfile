@@ -2,12 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                cleanWs()   // requires "Workspace Cleanup" plugin
-                checkout scm
-            }
-        }
         stage('Build') {
             agent {
                 docker {
