@@ -39,7 +39,7 @@ pipeline {
     }
     post {
             always {
-                echo 'Successful'
+                junit 'test-results/junit.xml'
             }
         }
     
