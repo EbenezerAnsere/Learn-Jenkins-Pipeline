@@ -35,11 +35,12 @@ pipeline {
                 '''
             }
         }
-        post {
+        
+    }
+    post {
             always {
                 echo 'Successful'
             }
         }
-    }
     
 }
